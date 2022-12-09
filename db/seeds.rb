@@ -6,7 +6,7 @@ end
 
 User.destroy_all
 5.times do
-    User.create(username: Faker::Name.middle_name, password: '1234')
+    User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, username: Faker::Name.middle_name, password: '1234')
 end
 
 Review.destroy_all

@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useState } from 'react'
+import {useEffect, useState} from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from './components/Home'
 import NavBar from './components/NavBar'
@@ -7,10 +7,12 @@ import Login from './components/Login'
 import BookDetail from './components/BookDetails'
 import EditBookForm from './components/EditBookForm'
 import BookForm from './components/BookForm'
+import UserPage from './components/UserPage'
 
 function App() {
   const [books, setBooks] = useState([])
   const [errors, setErrors] = useState(false)
+  const [currentUser, setCurrentUser] = useState("");
 
   useEffect(() => {
     fetchBooks()
@@ -39,26 +41,33 @@ function App() {
   
   const addBook = (book) => setBooks(current => [...current, book])
   const deleteBook = (id) => setBooks(current => current.filter(b => b.id !== id)) 
+
+  // const updateUser = (user) => setCurrentUser(user)
   
   if(errors) return <h1>{errors}</h1>
 
   return (
     <>
-      <NavBar />
-      {!sessionStorage.getItem('user_id') ? <Login error={'please login'}/>:
-      <Routes>
-        <Route exact path='/' element={<Home  books={books} deleteBook={deleteBook}/>}/>
+        <NavBar />
+        {!sessionStorage.getItem('user_id') ? <Login error={'please login'}  />:
+        <Routes>
+          <Route exact path='/' element={<Home  books={books} deleteBook={deleteBook}/>}/>
 
-        <Route path='/login' element={<Login />}/>
+          <Route path='/login' element={<Login />}/>
 
-        <Route path='/books/:id' element={<BookDetail books={books}  />}/>
+          {/* <Route path='/users/signup' element={ <SignUp/>}/> */}
 
-        <Route  path='/books/new' element={<BookForm addBook={addBook}/>}/>
+          <Route path='/books/:id' element={<BookDetail books={books}  />}/>
 
-        <Route  path='/books/:id/edit' element={<EditBookForm updateBook={updateBook}/>}/>
-              
-      </Routes>  
-      } 
+          <Route  path='/books/new' element={<BookForm addBook={addBook}/>}/>
+
+          <Route  path='/books/:id/edit' element={<EditBookForm updateBook={updateBook}/>}/>
+        
+          <Route path='/users/:id' element={<UserPage />}/>
+       
+        </Routes>  
+        
+        } 
     </>
   );
 } 

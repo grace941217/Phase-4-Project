@@ -23,6 +23,7 @@ function Navbar() {
         <li><NavLink className="NavLink" to='/books/new'>Add a Book</NavLink></li>
         <li><button id="logout" className="button" onClick={handleLogOut}>Log Out</button></li>
         <li><NavLink id="login" className="NavLink" to='/login'>Login/Sign Up</NavLink></li>
+        <li><NavLink className="NavLink" to='/users/:id'>User Page</NavLink></li>
       </ul>
     </nav>
   )
