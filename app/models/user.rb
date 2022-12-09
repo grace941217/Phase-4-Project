@@ -3,4 +3,5 @@ class User < ApplicationRecord
     has_many :books, through: :reviews
 
     has_secure_password
+    validates :username, uniqueness: true
 end
