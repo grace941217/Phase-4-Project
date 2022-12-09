@@ -11,5 +11,5 @@ end
 
 Review.destroy_all
 60.times do
-    Review.create(rating: rand(1..5), book_review: Faker::Quote.famous_last_words, book_id: rand(1..20), user_id: rand(1..5))
+    Review.create(rating: rand(1..5), book_review: Faker::Quote.famous_last_words, book_id: rand(1..60), user_id: rand(1..5))
 end

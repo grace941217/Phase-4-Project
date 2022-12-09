@@ -42,7 +42,7 @@ function BookDetail() {
               <h3>Description : </h3>
               <p>{description}</p>
               <h3>Reviews : </h3>
-              <p><ReviewContainer reviews={reviews}/></p>
+              <div><ReviewContainer reviews={reviews}/></div>
             </div>
           </div>
       </div>
