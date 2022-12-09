@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2022_12_04_231652) do
 
   create_table "reviews", force: :cascade do |t|
     t.integer "rating"
-    t.string "review"
+    t.string "book_review"
     t.integer "book_id"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false

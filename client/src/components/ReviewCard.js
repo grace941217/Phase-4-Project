@@ -1,16 +1,16 @@
 import {Link} from 'react-router-dom'
 
 function ReviewCard({review}) {
-    const {rating, message, image, id} = review
+    const {rating, book_review, id} = review
 
     return (
       <>
         <div className="content">
           <Link to={`/books/${id}`}></Link>
             <p>Rating : {rating}</p>
-            <p>Review : {message}</p>
+            <p>Review : {book_review}</p>
         </div>
-        <img alt ={message} src={image}/>
+        {/* <img alt ={message} src={image}/> */}
      </>
     );
   }
