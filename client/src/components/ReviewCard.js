@@ -10,7 +10,6 @@ function ReviewCard({review}) {
             <p>Rating : {rating}</p>
             <p>Review : {book_review}</p>
         </div>
-        {/* <img alt ={message} src={image}/> */}
      </>
     );
   }

@@ -51,7 +51,7 @@ function EditBookForm({updateBook}) {
             <label>Description : </label>
             <input type='text' name='description' value={formData.description} onChange={handleChange} />
                 
-            <input  id="update-button" className= "button" type='submit' value='Update Book' onClick={onSubmit}/>
+            <input id="update-button" className= "button" type='submit' value='Update Book' onClick={onSubmit}/>
           </div>
         </div>
         </>

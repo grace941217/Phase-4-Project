@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
-import {useNavigate} from 'react-router-dom'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function Login({updateUser}) {
+function Login() {
     const [formData, setFormData] = useState({
         username:'',
         password:''
@@ -12,7 +12,6 @@ function Login({updateUser}) {
     const navigate = useNavigate()
 
     function onSubmitLogin(e){
-        // e.preventDefault()
         const user = {
             username,
             password
@@ -28,13 +27,11 @@ function Login({updateUser}) {
         .then(res => res.json())
         .then(user => sessionStorage.setItem('user_id', user.id))
     
-        // updateUser(true)      
         navigate(`/`)
     }
 
     function onSubmitSignin(e){
         e.preventDefault()
-        // navigate("/")
         const user = {
             username,
             password
@@ -48,23 +45,17 @@ function Login({updateUser}) {
         .then(res => {
             if(res.ok) {
                 res.json().then(user => {
-                    // navigate(`/login`)
-                    // window.location.reload(false);
                 })
             } else {
                 res.json().then(json => setErrors(Object.entries(json.errors)))
-                // window.location.reload(false);
-
             }
         })
-
     }
-
 
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData({ ...formData, [name]: value })
-      }
+    }
 
     return (
         <> 
@@ -79,10 +70,8 @@ function Login({updateUser}) {
         <input id="login-form" className="button" type='submit' value='Log In' onClick={()=> {
             onSubmitLogin();
             setSignup(true);
-            // updateUser(true)
         }}/>
         <input id="signup-form" className="button" type='submit' value="Sign Up" onClick={onSubmitSignin}/>
-
 
         {errors? <div>{errors}</div>:null}
         </div>

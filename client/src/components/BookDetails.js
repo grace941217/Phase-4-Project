@@ -1,14 +1,12 @@
-import  { useParams } from 'react-router-dom'
-import {useEffect, useState} from 'react'
+import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import ReviewContainer from './ReviewContainer'
 
 function BookDetail() {
   const [book, setBook] = useState({})
   const [loading, setLoading] = useState(true)
   const [errors, setErrors] = useState(false)
-  
   const params = useParams()
-  // const navigate = useNavigate()
 
   useEffect(()=>{
     fetch(`/books/${params.id}`)
@@ -29,7 +27,6 @@ function BookDetail() {
   if(errors) return <h1>{errors}</h1>
 
   const { title, author, year, genre, description, reviews } = book
-  // const { id, rating, review } = reviews
 
   return (
       <div className="content">
@@ -52,5 +49,4 @@ function BookDetail() {
     )
   }
 
-  
   export default BookDetail
