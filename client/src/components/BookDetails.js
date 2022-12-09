@@ -1,5 +1,6 @@
 import  { useParams } from 'react-router-dom'
 import {useEffect, useState} from 'react'
+import ReviewContainer from './ReviewContainer'
 
 function BookDetail() {
   const [book, setBook] = useState({})
@@ -27,7 +28,8 @@ function BookDetail() {
   if(loading) return <div className="loading"><div></div><div></div><div></div><div></div></div>
   if(errors) return <h1>{errors}</h1>
 
-  const {title, author, year, genre, description} = book
+  const { title, author, year, genre, description, reviews } = book
+  // const { id, rating, review } = reviews
 
   return (
       <div className="content">
@@ -42,6 +44,8 @@ function BookDetail() {
               <p>{genre}</p>
               <h3>Description : </h3>
               <p>{description}</p>
+              <h3>Reviews : </h3>
+              <p><ReviewContainer reviews={reviews}/></p>
             </div>
           </div>
       </div>
